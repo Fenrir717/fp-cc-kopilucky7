@@ -23,10 +23,11 @@ API_KEY = '2e705cd6ec18b14774ac25cabb646d68'
 # Configure the database connection
 try:
     db = mysql.connector.connect(
-        host='localhost',
-        user='root',
-        password='',
-        database='db_kopi'
+        user="fenrir", 
+        password="{Journalctl@1371}", 
+        host="webfp-kopilucky7.mysql.database.azure.com", 
+        port=3306, 
+        database="{db_kopi}"
     )
     cursor = db.cursor(dictionary=True)
     print("Database connection established.")
