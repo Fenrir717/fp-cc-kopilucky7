@@ -161,7 +161,8 @@ def daftar_user():
         return jsonify({'message': 'Semua field harus diisi'}), 400
 
     try:
-        cursor = db.cursor()
+        # Menggunakan dictionary cursor dan buffered untuk memastikan semua hasil query diambil
+        cursor = db.cursor(dictionary=True, buffered=True)
 
         # Hash password menggunakan bcrypt
         hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
@@ -174,13 +175,17 @@ def daftar_user():
         cursor.execute(query, (username, hashed_password.decode('utf-8'), alamat, email))
         db.commit()
 
+        # Redirect ke halaman login setelah berhasil
         return redirect(url_for('login'))
 
     except mysql.connector.Error as err:
+        # Menangani error database dan mengirimkan pesan error
         return render_template('login.html', message=f"Error: {err}"), 500
 
     finally:
-        cursor.close()
+        # Pastikan cursor ditutup setelah eksekusi selesai
+        if cursor:
+            cursor.close()
 
 @app.route('/admin_page')
 @login_required
