@@ -495,8 +495,8 @@ function payWithCard() {
                             customerVaName: username,
                             email: email,
                             phoneNumber: phoneNumber,
-                            callbackUrl: "http://127.0.0.1:5000/duitku/callback",
-                            returnUrl: "http://127.0.0.1:5000/duitku/redirect",
+                            callbackUrl: "https://fp-kopilucky7-ctc9djftcga4bjh6.canadacentral-01.azurewebsites.net/duitku/callback",
+                            returnUrl: "https://fp-kopilucky7-ctc9djftcga4bjh6.canadacentral-01.azurewebsites.net/duitku/redirect",
                             signature: generateSignature("DS21166", totalAmount, "CC" + new Date().getTime(), "2e705cd6ec18b14774ac25cabb646d68")
                         }),
                         success: function(response) {
