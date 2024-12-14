@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Kopi Lucky 7</title>
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="/static/files/css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700|Raleway:400,700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="/static/files/css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="/static/files/css/responsive.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <a class="navbar-brand" href="index.html">
+            <img src="/static/files/images/logo_kopi-removebg-preview.png" alt="" />
+            <span>
+              Lucky 7
+            </span>
+          </a>
+
+          <div class="navbar-collapse" id="">
+            <div class="custom_menu-btn">
+              <button onclick="openNav()">
+                <span class="s-1"> </span>
+                <span class="s-2"> </span>
+                <span class="s-3"> </span>
+              </button>
+            </div>
+            <div id="myNav" class="overlay">
+              <div class="overlay-content">
+                <a href="{{ url_for('index') }}">BERANDA</a>
+                <a href="{{ url_for('about') }}">TENTANG</a>
+                <a href="{{ url_for('food') }}">Kopi</a>
+                <a href="{{ url_for('contact') }}">Kontak Kami</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+    <!-- slider section -->
+    <section class=" slider_section position-relative">
+      <div class="side_heading">
+        <h5>
+          K
+          o
+          p
+          i
+          L
+          u
+          c
+          k
+          y
+          7
+        </h5>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-3 col-md-4 offset-md-1">
+            <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
+                  01
+                </li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1">
+                  02
+                </li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2">
+                  03
+                </li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="3">
+                  04
+                </li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="4">
+                  05
+                </li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="5">
+                  06
+                </li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="img-box b-1">
+                    <img src="/static/files/images/americano.png" alt="" />
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="img-box b-2">
+                    <img src="/static/files/images/blackcoffee.png" alt="" />
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="img-box b-3">
+                    <img src="/static/files/images/cappuccino.png" alt="" />
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="img-box b-4">
+                    <img src="/static/files/images/iced_latte.png" alt="" />
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="img-box b-5">
+                    <img src="/static/files/images/macchiato.png" alt="" />
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="img-box b-6">
+                    <img src="/static/files/images/Cafe-Espresso-Free-PNG-Image.png" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div class="carousel_btn-box">
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class=" col-md-5 offset-md-1">
+            <div class="detail-box">
+              <h1>
+                Kopi <br>
+                Lucky 7
+              </h1>
+              <p>
+                Tujuh bintang bersinar,Tertuang dalam setiap tetes.
+                Lucky 7, mantra magis,Mengundang keberuntungan yang tak terbatas.
+              </p>
+              <div class="btn-box">
+                <a href="{{ url_for('contact') }}" class="btn-1">
+                  Kontak Kami
+                </a>
+                <a href="{{ url_for('login') }}" class="btn-2">
+                  Pesan Sekarang
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end slider section -->
+  </div>
+
+  <!-- about section -->
+  <section class="about_section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-5 offset-md-1">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                Tentang <br>
+                Kopi <br>
+                Kami
+              </h2>
+              <hr>
+            </div>
+            <p>
+              Kopi kami adalah hasil dari seleksi biji kopi terbaik dari berbagai daerah penghasil kopi berkualitas. 
+              Setiap cangkir kopi yang kami sajikan adalah perpaduan sempurna antara aroma, rasa, dan kesegaran.
+            </p>
+            <a href="">
+              Baca Selengkapnya...
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 px-0">
+          <div class="img-box">
+            <img src="/static/files/images/kopi_bg1.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+  <!-- hot section -->
+
+  <section class="hot_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          What's Hot
+        </h2>
+        <hr>
+      </div>
+      <p>
+        Biji Kopi Pilihan, Rasa Luar Biasa!
+      </p>
+    </div>
+    <div class="carousel_container">
+      <div class="container">
+        <div class="carousel-wrap ">
+          <div class="owl-carousel">
+            <div class="item">
+              <div class="box">
+                <div class="img-box">
+                  <img src="/static/files/images/americano.png" />
+                </div>
+                <div class="detail-box">
+                  <h2 style="font-family: 'Lucida Handwriting', cursive;">
+                    Americano
+                </h2>
+                  <h4>
+                    Rp.18,000
+                  </h4>
+                  <p>
+                    Kopi espresso yang diencerkan dengan air panas, menghasilkan rasa yang lebih ringan dibandingkan espresso murni. Cocok bagi yang menyukai kopi dengan rasa yang tidak terlalu kuat.
+                  </p>
+                  <a href="">
+                    Pesan Sekarang
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="box">
+                <div class="img-box">
+                  <img src="/static/files/images/blackcoffee.png" />
+                </div>
+                <div class="detail-box">
+                  <h2 style="font-family: 'Lucida Handwriting', cursive;">
+                    Black Coffee
+                </h2>
+                  <h4>
+                    Rp.15,000
+                  </h4>
+                  <p>
+                    Kopi hitam murni tanpa tambahan gula, susu, atau perasa. Menyajikan rasa asli dari biji kopi yang digunakan. Cocok bagi penikmat kopi sejati yang menyukai rasa pahit dan kuat.
+                  </p>
+                  <a href="">
+                    Pesan Sekarang
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="box">
+                <div class="img-box">
+                  <img src="/static/files/images/cappuccino.png" />
+                </div>
+                <div class="detail-box">
+                  <h2 style="font-family: 'Lucida Handwriting', cursive;">
+                    Cappuccino
+                </h2>
+                  <h4>
+                    Rp.20,000
+                  </h4>
+                  <p>
+                    Perpaduan sempurna antara espresso, susu panas, dan buih susu. Memiliki rasa yang kaya dan sedikit manis, serta tekstur yang lembut dan berlapis.
+                  </p>
+                  <a href="">
+                    Pesan Sekarang
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="box">
+                <div class="img-box">
+                  <img src="/static/files/images/iced_latte.png" />
+                </div>
+                <div class="detail-box">
+                  <h2 style="font-family: 'Lucida Handwriting', cursive;">
+                    Iced Latte
+                </h2>
+                  <h4>
+                    Rp.22,000
+                  </h4>
+                  <p>
+                    Kopi yang menyegarkan, terbuat dari espresso yang dicampur dengan susu dingin dan banyak es batu. Rasa kopinya lembut dan manis, cocok untuk dinikmati saat cuaca panas.
+                  </p>
+                  <a href="">
+                    Pesan Sekarang
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="box">
+                <div class="img-box">
+                  <img src="/static/files/images/macchiato.png" />
+                </div>
+                <div class="detail-box">
+                  <h2 style="font-family: 'Lucida Handwriting', cursive;">
+                    Macchiato
+                </h2>
+                  <h4>
+                    Rp.20,000
+                  </h4>
+                  <p>
+                    Macchiato adalah minuman kopi yang dibuat dengan espresso dan sedikit susu kukus atau berbusa
+                  </p>
+                  <a href="">
+                    Pesan Sekarang
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="box">
+                <div class="img-box">
+                  <img src="/static/files/images/Cafe-Espresso-Free-PNG-Image.png" />
+                </div>
+                <div class="detail-box">
+                  <h2 style="font-family: 'Lucida Handwriting', cursive;">
+                    Espresso
+                </h2>
+                  <h5>
+                    Rp.15,000
+                  </h5>
+                  <p>
+                    Espresso adalah kopi kental, yang biasanya disajikan dalam cangkir kecil
+                  </p>
+                  <a href="">
+                    Pesan Sekarang
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end hot section -->
+
+  <!-- client section -->
+
+  <section class="client_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <hr>
+        <h2>
+          what is says our clients
+        </h2>
+      </div>
+      <div id="carouselExample2Indicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExample2Indicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExample2Indicators" data-slide-to="1"></li>
+          <li data-target="#carouselExample2Indicators" data-slide-to="2"></li>
+          <li data-target="#carouselExample2Indicators" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="box ">
+              <div class="client_id">
+                <div class="img-box">
+                  <img src="/static/files/images/sarah.png" alt="" class="img-fluid">
+                </div>
+                <h4>
+                  Sarah, Pelanggan Setia
+                </h4>
+              </div>
+              <div class="detail-box">
+                <p>
+                  Kopi yang luar biasa! Rasanya kaya dan aroma yang harum. 
+                  Saya selalu kembali untuk lebih banyak lagi.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="box ">
+              <div class="client_id">
+                <div class="img-box">
+                  <img src="/static/files/images/michael.png" alt="" class="img-fluid">
+                </div>
+                <h4>
+                  Michael, Pelanggan Reguler
+                </h4>
+              </div>
+              <div class="detail-box">
+                <p>
+                  Kopi yang enak, harga yang terjangkau, dan pelayanan yang ramah. 
+                  Apa lagi yang bisa Anda minta?
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="box ">
+              <div class="client_id">
+                <div class="img-box">
+                  <img src="/static/files/images/client.png" alt="" class="img-fluid">
+                </div>
+                <h4>
+                  Jacksmith, Pelanggan Reguler
+                </h4>
+              </div>
+              <div class="detail-box">
+                <p>
+                  Saya sangat terkesan dengan kualitas kopi di sini. 
+                  Ini adalah salah satu yang terbaik yang pernah saya coba.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="box ">
+              <div class="client_id">
+                <div class="img-box">
+                  <img src="/static/files/images/emily.png" alt="" class="img-fluid">
+                </div>
+                <h4>
+                  Emily, Pelanggan Setia
+                </h4>
+              </div>
+              <div class="detail-box">
+                <p>
+                  Saya selalu senang datang ke sini untuk menikmati kopi dan suasana yang menyenangkan. 
+                  Ini adalah tempat yang sempurna untuk bertemu dengan teman-teman.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end client section -->
+
+  <!-- contact section -->
+
+  <section class="contact_section layout_padding-bottom ">
+    <div class="container">
+      <h2>
+        Get In touch
+      </h2>
+           <!-- Menampilkan pesan flash -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+  <div class="row">
+    <div class="col-12">
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+{% endwith %}
+
+
+<div class="row">
+  <div class="col-md-7">
+    <div class="form_container">
+      <form method="POST" action="/contact_send">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="text" name="phone" placeholder="Phone number" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="message" placeholder="Message" class="message_input" required>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+
+  
+  <!-- Bagian untuk informasi kontak -->
+  <div class="col-md-5">
+    <div class="contact_box">
+      <a href="">
+        <div class="img-box">
+          <img src="/static/files/images/location.png" alt="">
+        </div>
+        <h6>
+          Jl. Ring Road Utara, Ngringin, Condongcatur, Kec. Depok, Kabupaten Sleman, 
+          Daerah Istimewa Yogyakarta 55281
+        </h6>
+      </a>
+
+      <a href="">
+        <div class="img-box">
+          <img src="/static/files/images/call.png" alt="">
+        </div>
+        <h6>
+          (+01) 123456789012
+        </h6>
+      </a>
+
+      <a href="">
+        <div class="img-box">
+          <img src="/static/files/images/envelope.png" alt="">
+        </div>
+        <h6>
+          kel7_cc@gmail.com
+        </h6>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+  <!-- end contact section -->
+
+  <!-- subscribe section -->
+  <br>
+  <section class="subscribe_section">
+    <div class="container">
+      <form action="">
+        <div class="row">
+          <div class="col-lg-3 col-md-4">
+            <label for="subEmail">
+              Our Newsletter
+            </label>
+          </div>
+          <div class="col-lg-9 col-md-8">
+            <div class="box">
+              <input type="email" placeholder="Enter your email" id="subEmail">
+              <button>
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- end subscribe section -->
+
+  <!-- footer section -->
+  <section class="container-fluid footer_section">
+    <div class="social_container">
+      <h4>
+        Follow on
+      </h4>
+      <div class="social-box">
+        <a href="">
+          <img src="/static/files/images/fb.png" alt="">
+        </a>
+        <a href="">
+          <img src="/static/files/images/twitter.png" alt="">
+        </a>
+        <a href="">
+          <img src="/static/files/images/linkedin.png" alt="">
+        </a>
+        <a href="">
+          <img src="/static/files/images/youtube.png" alt="">
+        </a>
+      </div>
+    </div>
+    <p>
+      &copy; 2024 All Rights Reserved. Design by
+      <a href="https://html.design/">Kelompok 7-CC</a>
+    </p>
+  </section>
+  <!-- footer section -->
+
+  <script type="text/javascript" src="/static/files/js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="/static/files/js/bootstrap.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+
+  <script>
+    function openNav() {
+      document.getElementById("myNav").classList.toggle("menu_width");
+      document
+        .querySelector(".custom_menu-btn")
+        .classList.toggle("menu_btn-style");
+    }
+  </script>
+
+  <!-- owl carousel script -->
+  <script type="text/javascript">
+    $(".owl-carousel").owlCarousel({
+      loop: true,
+      margin: 35,
+      navText: [],
+      autoplay: true,
+      autoplayHoverPause: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+        600: {
+          items: 2
+        },
+        1000: {
+          items: 3
+        }
+      }
+    });
+  </script>
+  <!-- end owl carousel script -->
+
+</body>
+
+</html>

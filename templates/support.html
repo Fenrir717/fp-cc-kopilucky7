@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Komplain Pelanggan</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Styling untuk halaman */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: #4c4cb4;
+            color: white;
+            padding: 20px;
+            width: 300px;
+            height: 100%;
+            position: fixed;
+        }
+
+        .sidebar h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            margin: 10px 0;
+            display: block;
+            font-size: 16px;
+        }
+
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Content Area */
+        .content {
+            margin-left: 320px;
+            padding: 20px;
+            display: flex;
+            justify-content: center; /* Pastikan formulir terpusat secara horizontal */
+            align-items: center; /* Pastikan formulir terpusat secara vertikal */
+            height: 100vh;
+        }
+
+        /* Form Container */
+        .form-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px; /* Lebar maksimal formulir */
+        }
+
+        .form-container h2 {
+            margin-bottom: 30px;
+            font-size: 26px;
+            font-weight: bold;
+            text-align: center;
+            color: #4c4cb4;
+        }
+
+        .form-label {
+            font-size: 18px; /* Ukuran font label lebih besar */
+        }
+
+        .form-control, .form-select, textarea {
+            font-size: 16px; /* Ukuran font input lebih besar */
+            padding: 12px;
+        }
+
+        .checkout-btn {
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .checkout-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Flash messages */
+        .alert-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 400px;
+            z-index: 1050; /* Agar berada di atas konten lainnya */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar d-flex flex-column">
+        <h2>Lucky 7</h2>
+        <nav class="nav flex-column">
+            <a href="{{ url_for('dashboard') }}">Home</a>
+            <a href="{{ url_for('keranjang') }}">Keranjang</a>
+            <a href="{{ url_for('status_pemesanan') }}">Status Pemesanan</a>
+            <a href="{{ url_for('support') }}">Support 24/7</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </nav>
+    </div>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="alert-container">
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show text-center" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% endwith %}
+
+    <!-- Content Area -->
+    <div class="content">
+        <div class="form-container">
+            <h2>Formulir Komplain Pelanggan</h2>
+            <form action="/komplain" method="POST">
+                <!-- Nama -->
+                <div class="mb-3">
+                    <label for="nama" class="form-label">Nama</label>
+                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama Anda" required>
+                </div>
+
+                <!-- Jenis Keluhan -->
+                <div class="mb-3">
+                    <label for="jenis_keluhan" class="form-label">Jenis Keluhan</label>
+                    <select class="form-select" id="jenis_keluhan" name="jenis_keluhan" required>
+                        <option value="" disabled selected>Pilih jenis keluhan</option>
+                        <option value="error_website">Terjadi error dengan Website</option>
+                        <option value="error_akun">Terjadi error dengan Akun</option>
+                        <option value="error_transaksi">Terjadi error dengan Transaksi</option>
+                    </select>
+                </div>
+
+                <!-- Isi Keluhan -->
+                <div class="mb-3">
+                    <label for="isi_keluhan" class="form-label">Isi Keluhan / Catatan / Kronologi</label>
+                    <textarea class="form-control" id="isi_keluhan" name="isi_keluhan" rows="4" placeholder="Tulis keluhan atau kronologi di sini" required></textarea>
+                </div>
+
+                <!-- Tombol Kirim -->
+                <button type="submit" class="checkout-btn">Kirim</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

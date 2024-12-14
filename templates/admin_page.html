@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manajemen Pengguna - Pemesanan Kopi Online</title>
+  
+  <!-- Link ke CSS Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Styling untuk Profil Kami */
+.profile-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.profile-header h1 {
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.profile-header p {
+  font-size: 1.5em;
+  color: #555;
+}
+
+/* Container untuk Card */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly; /* Rata tengah dan seimbang */
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Styling untuk Setiap Card */
+.card {
+  flex: 1 1 22%; /* Mengatur card untuk memiliki lebar 22% dan responsif */
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-10px); /* Efek hover untuk tampilan lebih menarik */
+}
+
+.card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.card h2 {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.card p {
+  font-size: 1em;
+  color: #666;
+}
+
+/* Styling Responsif untuk perangkat lebih kecil */
+@media (max-width: 768px) {
+  .card-container {
+    justify-content: center;
+  }
+
+  .card {
+    flex: 1 1 48%; /* Setiap card akan mengambil 48% pada layar kecil */
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    flex: 1 1 100%; /* Card akan menumpuk menjadi satu baris pada layar sangat kecil */
+  }
+}
+
+/* Scroll behavior */
+html {
+  scroll-behavior: smooth;  /* Menambahkan smooth scroll di seluruh halaman */
+}
+
+/* Styling tambahan untuk header dan navbar */
+.navbar {
+  background-color: #4c4cb4 !important;  /* Mengubah warna navbar */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+
+.navbar-brand {
+  font-size: 1.8em;
+}
+
+.navbar-nav {
+  margin-left: auto;
+}
+
+.nav-link {
+  font-size: 1.2em;
+  padding: 10px 15px;
+}
+
+/* Styling untuk section */
+section {
+  padding: 40px 20px; /* Mengurangi padding atas dan bawah */
+  margin-top: 80px; /* Memberikan jarak antara navbar dan konten */
+  box-sizing: border-box; /* Memastikan padding tidak menambah ukuran */
+  min-height: 30vh; /* Membuat section sedikit lebih kecil agar tidak terlalu tinggi */
+  overflow: hidden; /* Menghindari konten yang meluap keluar */
+}
+
+#home {
+  background-color: #f1f1f1;
+}
+
+#userManagement {
+  background-color: #ccc;
+}
+
+#adminManagement {
+  background-color: #ccc;
+}
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Admin Panel</a>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#userManagement">Manajemen User</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  
+  <!-- Section Profil Kami -->
+  <section id="home">
+    <div class="profile-header">
+      <h1>Hi kami dari, Kelompok 7 Cloud Computing</h1>
+    </div>
+    <div class="card-container">
+      <div class="card">
+        <img src="/static/files/img/haqiqi.jpeg" alt="Haqiqi">
+        <h2>Muhammad Nur Haqiqi</h2>
+        <p>22.83.0833</p>
+        <p>Mahasiswa Teknik Komputer</p>
+        <p>Gamer Ganteng Idaman</p>
+      </div>
+      <div class="card">
+        <img src="/static/files/img/Fadhil.jpg" alt="Fadhil">
+        <h2>Muhammad Fadhil Mundzir Sakaria</h2>
+        <p>22.83.0829</p>
+        <p>Mahasiswa Teknik Komputer</p>
+        <p>Suka Membahas Politik bersama Haqiqi</p>
+      </div>
+      <div class="card">
+        <img src="/static/files/img/jorel.jpg" alt="Jorel">
+        <h2>Georel Jeferson Fransiskus Bonai</h2>
+        <p>22.83.0833</p>
+        <p>Mahasiswa Teknik Komputer</p>
+        <p>Suka bermain Game dan Menggambar</p>
+      </div>
+      <div class="card">
+        <img src="/static/files/img/aldo.jpg" alt="Aldo">
+        <h2>Janssensius Rifaldo Lhezu</h2>
+        <p>22.83.0861</p>
+        <p>Mahasiswa Teknik Komputer</p>
+        <p>Suka Healing di Tambakboyo dan Pecinta Kucing</p>
+      </div>
+    </div>
+  </section>
+  
+
+<!-- Section Manajemen User -->
+<section id="userManagement" class="container mt-5">
+  <h2>Manajemen User</h2>
+  <table class="table table-striped table-bordered table-hover shadow-lg" id="userTable">
+    <thead class="table-terang">
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Alamat Email</th>
+        <th>Email</th>
+        <th>Hapus</th>
+      </tr>
+    </thead>
+    <tbody id="userTable">
+      <!-- Data User akan tampil disini -->
+    </tbody>
+  </table>
+  <button class="btn btn-primary" data-toggle="modal" data-target="#TambahUserModal">Tambah User</button>
+</section>
+
+<!-- Section Manajemen Admin -->
+<section id="adminManagement" class="container mt-5">
+  <h2>Manajemen Admin</h2>
+  <table class="table table-striped table-bordered table-hover shadow-lg" id="adminTable">
+    <thead class="table-terang">
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Alamat Email</th>
+        <th>Email</th>
+        <th>Hapus</th>
+      </tr>
+    </thead>
+    <tbody id="adminTable">
+      <!-- Data Admin akan tampil disini -->
+    </tbody>
+  </table>
+  <button class="btn btn-primary" data-toggle="modal" data-target="#TambahAdminModal">Tambah Admin</button>
+</section>
+
+<!-- Modal untuk Tambah User -->
+<div class="modal fade" id="TambahUserModal" tabindex="-1" role="dialog" aria-labelledby="TambahUserLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="TambahUserLabel">Tambah User Baru</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="tambahUserForm">
+          <div class="form-group">
+            <label for="username_user">Username:</label>
+            <input type="text" class="form-control" id="username_user" name="username" maxlength="30" required>
+          </div>
+          <div class="form-group">
+            <label for="password_user">Password:</label>
+            <input type="password" class="form-control" id="password_user" name="password" maxlength="30" required>
+          </div>
+          <div class="form-group">
+            <label for="alamat_user">Alamat:</label>
+            <input type="text" class="form-control" id="alamat_user" name="alamat" maxlength="50" required>
+          </div>
+          <div class="form-group">
+            <label for="email_user">Alamat Email:</label>
+            <input type="email" class="form-control" id="email_user" name="email" maxlength="30" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Tambahkan</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal untuk Tambah Admin -->
+<div class="modal fade" id="TambahAdminModal" tabindex="-1" role="dialog" aria-labelledby="TambahAdminLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="TambahAdminLabel">Tambah Admin Baru</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="tambahAdminForm">
+          <div class="form-group">
+            <label for="username_admin">Username:</label>
+            <input type="text" class="form-control" id="username_admin" name="username" maxlength="30" required>
+          </div>
+          <div class="form-group">
+            <label for="password_admin">Password:</label>
+            <input type="password" class="form-control" id="password_admin" name="password" maxlength="30" required>
+          </div>
+          <div class="form-group">
+            <label for="alamat_admin">Alamat:</label>
+            <input type="text" class="form-control" id="alamat_admin" name="alamat" maxlength="50" required>
+          </div>
+          <div class="form-group">
+            <label for="email_admin">Alamat Email:</label>
+            <input type="email" class="form-control" id="email_admin" name="email" maxlength="30" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Tambahkan</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Link ke JS Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Link ke JS Kustom -->
+  <script src="script.js"></script>
+  <script>
+    $(document).ready(function() {
+        // Load data user
+        function loadUsers() {
+            $.getJSON("/users", function(users) {
+                console.log("Data Users:", users); // Log data users
+                let rows = "";
+                users.forEach(user => {
+                    rows += `
+                    <tr>
+                        <td>${user.ID_User}</td>
+                        <td>${user.username}</td>
+                        <td>${user.password}</td>
+                        <td>${user.alamat}</td>
+                        <td>${user.email}</td>
+                        <td><button class="btn btn-danger btn-sm delete-user" data-id="${user.ID_User}">Hapus</button></td>
+                    </tr>`;
+                });
+                $("#userTable tbody").html(rows);
+            }).fail(function(xhr, status, error) {
+                console.error("Error fetching users:", status, error); // Log error
+            });
+        }
+  
+        // Load data admin
+        function loadAdmins() {
+            $.getJSON("/admins", function(admins) {
+                console.log("Data Admins:", admins); // Log data admins
+                let rows = "";
+                admins.forEach(admin => {
+                    rows += `
+                    <tr>
+                        <td>${admin.ID_Admin}</td>
+                        <td>${admin.username}</td>
+                        <td>${admin.password}</td>
+                        <td>${admin.alamat}</td>
+                        <td>${admin.email}</td>
+                        <td><button class="btn btn-danger btn-sm delete-admin" data-id="${admin.ID_Admin}">Hapus</button></td>
+                    </tr>`;
+                });
+                $("#adminTable tbody").html(rows);
+            }).fail(function(xhr, status, error) {
+                console.error("Error fetching admins:", status, error); // Log error
+            });
+        }
+  
+        // Tambah user
+        $("#TambahUserModal form").submit(function(e) {
+            e.preventDefault();
+            const userData = {
+                username: $("#username_user").val(),
+                password: $("#password_user").val(),
+                alamat: $("#alamat_user").val(),
+                email: $("#email_user").val()
+            };
+            console.log("Data User to Add:", userData); // Log data yang akan ditambahkan
+            $.ajax({
+                url: "/users",
+                type: "POST",
+                contentType: "application/json", // Set Content-Type ke application/json
+                data: JSON.stringify(userData), // Data dikirim dalam format JSON string
+                success: function(response) {
+                    console.log("Response from Add User:", response); // Log response dari server
+                    alert(response.message);
+                    loadUsers();
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error adding user:", status, error); // Log error
+                    alert(`Gagal menambahkan user: ${xhr.responseText}`);
+                }
+            });
+        });
+  
+        // Tambah admin
+        $("#TambahAdminModal form").submit(function(e) {
+            e.preventDefault();
+            const adminData = {
+                username: $("#username_admin").val(),
+                password: $("#password_admin").val(),
+                alamat: $("#alamat_admin").val(),
+                email: $("#email_admin").val()
+            };
+            console.log("Data Admin to Add:", adminData); // Log data yang akan ditambahkan
+            $.ajax({
+                url: "/admins",
+                type: "POST",
+                contentType: "application/json", // Set Content-Type ke application/json
+                data: JSON.stringify(adminData), // Data dikirim dalam format JSON string
+                success: function(response) {
+                    console.log("Response from Add Admin:", response); // Log response dari server
+                    alert(response.message);
+                    loadAdmins();
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error adding admin:", status, error); // Log error
+                    alert(`Gagal menambahkan admin: ${xhr.responseText}`);
+                }
+            });
+        });
+  
+        // Hapus user
+        $(document).on("click", ".delete-user", function() {
+            const id = $(this).data("id");
+            console.log("ID User to Delete:", id); // Log ID yang akan dihapus
+            $.ajax({
+                url: `/users/${id}`,
+                type: "DELETE",
+                success: function(response) {
+                    console.log("Response from Delete User:", response); // Log response dari server
+                    alert(response.message);
+                    loadUsers();
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error deleting user:", status, error); // Log error
+                    alert(`Gagal menghapus user: ${xhr.responseText}`);
+                }
+            });
+        });
+  
+        // Hapus admin
+        $(document).on("click", ".delete-admin", function() {
+            const id = $(this).data("id");
+            console.log("ID Admin to Delete:", id); // Log ID yang akan dihapus
+            $.ajax({
+                url: `/admins/${id}`,
+                type: "DELETE",
+                success: function(response) {
+                    console.log("Response from Delete Admin:", response); // Log response dari server
+                    alert(response.message);
+                    loadAdmins();
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error deleting admin:", status, error); // Log error
+                    alert(`Gagal menghapus admin: ${xhr.responseText}`);
+                }
+            });
+        });
+  
+        // Initial load
+        loadUsers();
+        loadAdmins();
+    });
+</script>
+</body>
+</html>

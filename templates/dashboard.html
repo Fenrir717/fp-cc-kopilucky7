@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar #03</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for the cart icon -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <!-- Link CSS Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Script JS Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        body {
+            display: flex;
+            max-height: 200vh;
+            max-width: 200vh;
+            margin: 0;
+        }
+    
+        .sidebar {
+            background-color: #4c4cb4; /* Purple background */
+            color: white;
+            padding: 15px;
+            width: 1000px; /* Lebar sidebar diperbesar */
+        }
+    
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            margin: 10px 0;
+            display: block;
+        }
+    
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+    
+        .content {
+            flex-grow: 1;
+            padding: 30px;
+            background-color: #f8f9fa;
+        }
+
+        .cart-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+    
+        .cart-container:hover {
+            color: #ff6f61;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #ff6f61;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 2px 5px;
+            border-radius: 50%;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 10  px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+    
+        .menu-item:hover {
+            transform: scale(1.05);
+        }
+    
+        .menu-item img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease-in-out;
+        }
+    
+        .menu-item:hover img {
+            transform: scale(1.1);
+        }
+    
+        .menu-item .content {
+            padding: 10px;
+            text-align: center;
+        }
+    
+        .menu-item .content h5 {
+            margin-bottom: 10px;
+        }
+    
+        .menu-item .content .price {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar d-flex flex-column">
+        <h2>Lucky 7</h2>
+        <nav class="nav flex-column">
+            <a href="{{ url_for('dashboard') }}">Home</a>
+            <a href="{{ url_for('keranjang') }}">Keranjang</a>
+            <a href="{{ url_for('status_pemesanan') }}">Status Pemesanan</a>
+            <a href="{{ url_for('support') }}">Support 24/7</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </nav>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <h1 class="mb-4">Our Menu</h1>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="menu-item">
+                    <img src="/static/files/images/black_coffee.png" alt="Pizza">
+                    <div class="content">
+                        <h5>Black Coffee</h5>
+                        <p>Kopi hitam murni, kuat dan intens, tanpa tambahan apapun.</p>
+                        <div class="price">IDR 15.000</div>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalMenu" onclick="openModal(1)">Add to Cart</button>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="menu-item">
+                    <img src="/static/files/images/iced_toddy.jpg" alt="Burger">
+                    <div class="content">
+                        <h5>Americano</h5>
+                        <p>Espresso diencerkan dengan air panas, menghasilkan rasa yang lebih ringan.</p>
+                        <div class="price">IDR 20.000</div>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalMenu" onclick="openModal(2)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="menu-item">
+                    <img src="/static/files/images/capuccino.jpeg" alt="Pasta">
+                    <div class="content">
+                        <h5>Cappuccino</h5>
+                        <p>Perpaduan sempurna antara espresso, susu panas, dan buih susu.</p>
+                        <div class="price">IDR 20.000</div>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalMenu" onclick="openModal(3)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="menu-item">
+                    <img src="/static/files/images/icedlatte.jpg" alt="Pasta">
+                    <div class="content">
+                        <h5>Iced Latte</h5>
+                        <p>Kopi dingin yang menyegarkan, terbuat dari espresso dingin dan susu dingin.</p>
+                        <div class="price">IDR 22.000</div>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalMenu" onclick="openModal(4)">Add to Cart</button>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="menu-item">
+                    <img src="/static/files/images/Caramel+Macchiato.jpg" alt="Pasta">
+                    <div class="content">
+                        <h5>Macchiato</h5>
+                        <p>Espresso pendek dengan sedikit buih susu dan cream.</p>
+                        <div class="price">IDR 20.000</div>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalMenu" onclick="openModal(5)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="menu-item">
+                    <img src="/static/files/images/Shot-of-espresso.png" alt="Pasta">
+                    <div class="content">
+                        <h5>Espresso</h5>
+                        <p>Kopi hitam pekat yang kuat dan penuh aroma.</p>
+                        <div class="price">IDR 15.000</div>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalMenu" onclick="openModal(6)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal  -->
+    <div class="modal fade" id="modalMenu" tabindex="-1" aria-labelledby="modalMenuLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalMenuLabel">Kopi</h5>
+                </div>
+                <div class="modal-body">
+                    <!-- Elemen input dengan tipe "number" untuk memilih jumlah -->
+                    <label for="kopi">Kopi:</label>
+                    <input type="text" class="form-control" id="kopi" disabled value="">
+                    <br>
+                    <label for="quantity">Jumlah:</label>
+                    <input type="number" id="quantity" class="form-control" value="1" min="1">
+                    <br>
+                    <label for="price1">Harga 1 cangkir kopi:</label>
+                    <input class="form-control" id="price" type="text" disabled value="">
+                    <br>
+                    <!-- Div untuk input hidden yang tidak mempengaruhi tampilan -->
+                <div class="d-none">
+                    <input type="hidden" id="idKopi" value="">
+                    <input type="hidden" id="menuImage" value="">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-warning" onclick="addToCart()">Tambahkan ke Keranjang</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    function openModal(menuId) {
+        $.ajax({
+            url: '/get_menu',  // URL ke route POST di backend
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ "menu_id": menuId }),
+            success: function(response) {
+                if (response.error) {
+                    alert(response.error);
+                    return;
+                }
+    
+                // Isi modal dengan data dari backend
+                $('#kopi').val(response.nama_kopi);
+                $('#price').val(response.harga);
+                $('#menuImage').val(response.gambar_url);  // Mengatur input hidden dengan URL gambar
+                $('#idKopi').val(response.id);
+    
+                // Pastikan URL gambar diambil dari hidden input
+                console.log("Gambar URL di modal:", response.gambar_url);
+            },
+            error: function() {
+                alert('Terjadi kesalahan saat mendapatkan data menu.');
+            }
+        });
+    }
+    
+    function addToCart() {
+        // Pertama, ambil informasi pengguna sebelum melanjutkan
+        $.ajax({
+            url: '/informasi_pengguna',  // Mengakses endpoint untuk mengambil informasi pengguna
+            method: 'GET',
+            success: function(data) {
+                // Cek jika data nama_pengguna ada (berarti pengguna sudah login)
+                if (data.nama_pengguna) {
+                    // Menyimpan username dan informasi lain dari response
+                    var username = data.nama_pengguna;
+                    var userId = data.user_id;
+                    var userType = data.user_type;
+    
+                    // Debug untuk memeriksa informasi pengguna
+                    console.log("Nama Pengguna: " + username);
+                    console.log("User ID: " + userId);
+                    console.log("User Type: " + userType);
+    
+                    // Jika informasi pengguna ditemukan, lanjutkan dengan menambahkan item ke keranjang
+                    var quantity = $('#quantity').val();
+                    var price = $('#price').val();
+                    var menuName = $('#kopi').val();
+                    var menuId = $('#idKopi').val();  // ID menu kopi
+                    var imageUrl = $('#menuImage').val();  // Mengambil URL gambar dari hidden input
+    
+                    // Debug untuk memeriksa apakah imageUrl sudah diambil
+                    console.log("Image URL yang dikirim:", imageUrl);
+    
+                    // Cek jika imageUrl kosong
+                    if (!imageUrl) {
+                        alert("Gambar tidak ditemukan.");
+                        return;
+                    }
+    
+                    var totalPrice = quantity * parseFloat(price);  // Hitung total harga
+    
+                    // Menambahkan item ke localStorage (optional)
+                    var cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    cart.push({
+                        id: menuId, // Untuk referensi internal, tapi tidak perlu dikirimkan ke server
+                        name: menuName,
+                        quantity: quantity,
+                        totalPrice: totalPrice,
+                        image: imageUrl  // Simpan image URL ke dalam cart
+                    });
+                    localStorage.setItem('cart', JSON.stringify(cart));
+    
+                    // Mengirimkan data ke server
+                    $.ajax({
+                        url: '/add_to_cart',
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            user_id: userId,  // Mengirim user_id dari session
+                            name: menuName,
+                            quantity: quantity,
+                            totalPrice: totalPrice,
+                            image: imageUrl  // Pastikan image URL dikirim
+                        }),
+                        success: function(response) {
+                            alert("Item ditambahkan ke keranjang!");
+                        },
+                        error: function() {
+                            alert('Terjadi kesalahan saat menambahkan ke keranjang.');
+                        }
+                    });
+                } else {
+                    alert("Pengguna tidak ditemukan atau tidak login.");
+                }
+            },
+            error: function() {
+                alert('Terjadi kesalahan dalam mengambil data pengguna.');
+            }
+        });
+    }
+    
+</script>
+
+</html>
