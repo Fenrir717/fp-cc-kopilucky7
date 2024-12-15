@@ -443,24 +443,20 @@ def duitku_callback():
         data = request.form  # Data dari callback
 
         # Ambil semua parameter penting dari data
-        merchant_code = data.get('merchantCode')
-        amount = data.get('amount')
         merchant_order_id = data.get('merchantOrderId')
+        amount = data.get('amount')
         result_code = data.get('resultCode')
         signature = data.get('signature')
-        product_details = data.get('productDetails')
-        additional_param = data.get('additionalParam')
+        product_details = data.get('productDetails', 'None')  # Default None jika tidak ada
         payment_code = data.get('paymentCode')
-        merchant_user_id = data.get('merchantUserId')
         reference = data.get('reference')
         publisher_order_id = data.get('publisherOrderId')
-        sp_user_hash = data.get('spUserHash')
         settlement_date = data.get('settlementDate')
-        issuer_code = data.get('issuerCode')
+        issuer_code = data.get('issuerCode', 'None')  # Default None jika tidak ada
 
         # Validasi signature
         calculated_signature = hashlib.md5(
-            f"{merchant_code}{amount}{merchant_order_id}{API_KEY}".encode()
+            f"{merchant_order_id}{amount}{API_KEY}".encode()
         ).hexdigest()
 
         if signature == calculated_signature:
@@ -475,10 +471,8 @@ def duitku_callback():
             Amount: {amount}
             Product Details: {product_details}
             Payment Code: {payment_code}
-            Additional Param: {additional_param}
             Reference: {reference}
             Publisher Order ID: {publisher_order_id}
-            SP User Hash: {sp_user_hash}
             Settlement Date: {settlement_date}
             Issuer Code: {issuer_code}
             """)
